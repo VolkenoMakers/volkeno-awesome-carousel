@@ -1,0 +1,318 @@
+/* add css module styles here (optional) */
+
+.test {
+  margin: 2em;
+  padding: 0.5em;
+  border: 2px solid #000;
+  font-size: 2em;
+  text-align: center;
+}
+
+.sliderSingleContent {
+  opacity: 1;
+  transform: translateX(0%) scale(1);
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(0);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.react3dCarousel {
+  position: relative;
+}
+.react3dCarousel .sliderContainer {
+  position: absolute;
+  left: 50%;
+  top: 5vw;
+  width: 90%;
+  margin: 0px auto 0px -45%;
+}
+.react3dCarousel .sliderContainer .sliderContent {
+  position: relative;
+  left: 50%;
+  top: 0%;
+  width: 50%;
+  height: 80%;
+  transform: translateX(-50%);
+}
+.react3dCarousel .sliderContainer .sliderContent .sliderSingle {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  transition: z-index 0ms 250ms;
+}
+.react3dCarousel
+  .sliderContainer
+  .sliderContent
+  .sliderSingle
+  .sliderSingleContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
+  transition: 500ms cubic-bezier(0.17, 0.67, 0.55, 1.43);
+  transform: scale(0);
+  opacity: 0;
+}
+.react3dCarousel
+  .sliderContainer
+  .sliderContent
+  .sliderSingle
+  .sliderSingleContent
+  img {
+  max-width: 100%;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+}
+.react3dCarousel
+  .sliderContainer
+  .sliderContent
+  .sliderSingle.preactivede
+  .sliderSingleContent {
+  transform: translateX(-50%) scale(0);
+}
+.react3dCarousel .sliderContainer .sliderContent .sliderSingle.preactive {
+  z-index: 1;
+}
+.react3dCarousel
+  .sliderContainer
+  .sliderContent
+  .sliderSingle.preactive
+  .sliderSingleContent {
+  opacity: 0.3;
+  transform: translateX(-25%) scale(0.8);
+}
+.react3dCarousel .sliderContainer .sliderContent .sliderSingle.proactive {
+  z-index: 1;
+}
+.react3dCarousel
+  .sliderContainer
+  .sliderContent
+  .sliderSingle.proactive
+  .sliderSingleContent {
+  opacity: 0.3;
+  transform: translateX(25%) scale(0.8);
+}
+.react3dCarousel
+  .sliderContainer
+  .sliderContent
+  .sliderSingle.proactivede
+  .sliderSingleContent {
+  transform: translateX(50%) scale(0);
+}
+.react3dCarousel .sliderContainer .sliderContent .sliderSingle.active {
+  z-index: 2;
+}
+.react3dCarousel
+  .sliderContainer
+  .sliderContent
+  .sliderSingle.active
+  .sliderLeft,
+.react3dCarousel
+  .sliderContainer
+  .sliderContent
+  .sliderSingle.active
+  .sliderRight {
+  display: block;
+}
+.react3dCarousel
+  .sliderContainer
+  .sliderContent
+  .sliderSingle.active
+  .sliderSingleContent {
+  opacity: 1;
+  transform: translateX(0%) scale(1);
+}
+.react3dCarousel .sliderContainer .sliderLeft {
+  position: absolute;
+  display: none;
+  z-index: 3;
+  right: 101%;
+  margin-right: 5px;
+  padding: 20px 15px;
+  height: 100%;
+  cursor: pointer;
+}
+.react3dCarousel .sliderContainer .sliderLeft div {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  margin-top: -20px;
+  color: #fff;
+  transform: translateY(-50%);
+  padding: 10px 10px;
+  border-top: 2px solid #fdc84b;
+  border-right: 2px solid #fdc84b;
+  border-bottom: 2px solid #fdc84b;
+  border-left: 2px solid #fdc84b;
+}
+.react3dCarousel .sliderContainer .sliderRight {
+  display: none ;
+  position: absolute;
+  z-index: 3;
+  left: 101%;
+  padding: 20px 15px;
+  height: 101%;
+  cursor: pointer;
+  margin-left: -2px;
+}
+.react3dCarousel .sliderContainer .sliderRight div {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  margin-top: -20px;
+  color: #fff;
+  transform: translateY(-50%);
+  padding: 10px 10px;
+  border-top: 2px solid #fdc84b;
+  border-right: 2px solid #fdc84b;
+  border-bottom: 2px solid #fdc84b;
+  border-left: 2px solid #fdc84b;
+}
+.react3dCarousel .sliderContainer .sliderLeftNoborders {
+  position: absolute;
+  display: none;
+  z-index: 3;
+  right: 101%;
+  margin-right: 5px;
+  padding: 20px 15px;
+  height: 100%;
+  cursor: pointer;
+}
+.react3dCarousel .sliderContainer .sliderLeftNoborders div {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  margin-top: -20px;
+  color: #fff;
+  transform: translateY(-50%);
+  padding: 10px 10px;
+}
+.react3dCarousel .sliderContainer .sliderRightNoborders {
+  display: none !important;
+  position: absolute;
+  z-index: 3;
+  left: 101%;
+  padding: 20px 15px;
+  height: 101%;
+  cursor: pointer;
+  margin-left: -2px;
+}
+.react3dCarousel .sliderContainer .sliderRightNoborders div {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  margin-top: -20px;
+  color: #fff;
+  transform: translateY(-50%);
+  padding: 10px 10px;
+}
+.react3dCarousel .sliderContainer .sliderDisabled div {
+  display: none;
+}
+
+.textual-item.selected {
+  display: block !important;
+}
+.textual-item {
+  display: none;
+}
+.sliderSingle.active .sliderSingleContent img {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  border: 10px solid #ee3434;
+}
+.react3dCarousel
+  .sliderContainer
+  .sliderContent
+  .sliderSingle
+  .sliderSingleContent {
+  box-shadow: none !important;
+}
+/* .caroussel-image-item-container {
+    list-style: none;
+}
+.caroussel-image-item-container img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+} */
+.sliderContent .sliderSingle.proactive img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-top: 55px;
+  margin-left: 65px;
+}
+.sliderContent .sliderSingle.preactive img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-top: 55px;
+  margin-right: 65px;
+}
+
+.react3dCarousel
+  .sliderContainer
+  .sliderContent
+  .sliderSingle.preactive
+  .sliderSingleContent {
+  opacity: 0.7 !important;
+}
+.react3dCarousel
+  .sliderContainer
+  .sliderContent
+  .sliderSingle.proactive
+  .sliderSingleContent {
+  opacity: 0.7 !important;
+}
+.sliderRight .fa,
+.sliderLeft .fa {
+  color: #000;
+}
+.react3dCarousel .sliderContainer .sliderRight div {
+  border-top: 2px solid #ee3434 !important;
+  border-right: 2px solid #ee3434 !important;
+  border-bottom: 2px solid #ee3434 !important;
+  border-left: 2px solid #ee3434 !important;
+}
+.react3dCarousel .sliderContainer .sliderLeft div {
+  border-top: 2px solid #ee3434 !important;
+  border-right: 2px solid #ee3434 !important;
+  border-bottom: 2px solid #ee3434 !important;
+  border-left: 2px solid #ee3434 !important;
+}
+#btn-control .sliderLeft {
+  display: block !important;
+}
+#btn-control .sliderRight {
+  display: block !important;
+}
