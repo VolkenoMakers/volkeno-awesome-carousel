@@ -6,7 +6,7 @@ var reactSwipeable = require('react-swipeable');
 var PropTypes = _interopDefault(require('prop-types'));
 var bs = require('react-icons/bs');
 
-var styles = {"test":"_styles-module__test__3ybTi","sliderSingleContent":"_styles-module__sliderSingleContent__3c5V9","react3dCarousel":"_styles-module__react3dCarousel__24jc0","sliderContainer":"_styles-module__sliderContainer__1ac0a","sliderContent":"_styles-module__sliderContent__2TODB","sliderSingle":"_styles-module__sliderSingle__1Dlc_","preactivede":"_styles-module__preactivede__1AkrP","preactive":"_styles-module__preactive__3YTAI","proactive":"_styles-module__proactive__2e5FE","proactivede":"_styles-module__proactivede__39-nr","active":"_styles-module__active__3sodH","sliderLeft":"_styles-module__sliderLeft__2MbHb","sliderRight":"_styles-module__sliderRight__1OwVg","sliderLeftNoborders":"_styles-module__sliderLeftNoborders__1-KfO","sliderRightNoborders":"_styles-module__sliderRightNoborders__1O8RK","sliderDisabled":"_styles-module__sliderDisabled__1aC52","textual-item":"_styles-module__textual-item__3hjNl","selected":"_styles-module__selected__2tiFr","fa":"_styles-module__fa__2Rvwq","btn-control":"_styles-module__btn-control__3wWwt","heartbeat":"_styles-module__heartbeat__2IKEy"};
+var styles = {"test":"_styles-module__test__3ybTi","container":"_styles-module__container__1Lxpd","containerSlide":"_styles-module__containerSlide__XBhrP","textualItem":"_styles-module__textualItem__1YSPp","selected":"_styles-module__selected__2tiFr","react3dCarousel":"_styles-module__react3dCarousel__24jc0","sliderContainer":"_styles-module__sliderContainer__1ac0a","sliderContent":"_styles-module__sliderContent__2TODB","sliderSingle":"_styles-module__sliderSingle__1Dlc_","sliderSingleContent":"_styles-module__sliderSingleContent__3c5V9","preactivede":"_styles-module__preactivede__1AkrP","preactive":"_styles-module__preactive__3YTAI","proactive":"_styles-module__proactive__2e5FE","proactivede":"_styles-module__proactivede__39-nr","active":"_styles-module__active__3sodH","sliderLeft":"_styles-module__sliderLeft__2MbHb","sliderRight":"_styles-module__sliderRight__1OwVg","sliderLeftNoborders":"_styles-module__sliderLeftNoborders__1-KfO","sliderRightNoborders":"_styles-module__sliderRightNoborders__1O8RK","sliderDisabled":"_styles-module__sliderDisabled__1aC52","textual-item":"_styles-module__textual-item__3hjNl","fa":"_styles-module__fa__2Rvwq","btn-control":"_styles-module__btn-control__3wWwt","heartbeat":"_styles-module__heartbeat__2IKEy"};
 
 var VolkenoCarousel = function VolkenoCarousel(props) {
   var _React$useState = React__default.useState(0),
@@ -42,7 +42,8 @@ var VolkenoCarousel = function VolkenoCarousel(props) {
     props.slides.forEach(function (slide) {
       var slideobject = {
         "class": styles.sliderSingle + ' ' + styles.proactivede,
-        element: slide
+        element: slide === null || slide === void 0 ? void 0 : slide.img,
+        text: slide === null || slide === void 0 ? void 0 : slide.text
       };
       locSlides.push(slideobject);
     });
@@ -51,7 +52,8 @@ var VolkenoCarousel = function VolkenoCarousel(props) {
       props.slides.forEach(function (slide) {
         var slideobject = {
           "class": styles.sliderSingle + ' ' + styles.proactivede,
-          element: slide
+          element: slide === null || slide === void 0 ? void 0 : slide.img,
+          text: slide === null || slide === void 0 ? void 0 : slide.text
         };
         locSlides.push(slideobject);
       });
@@ -76,82 +78,93 @@ var VolkenoCarousel = function VolkenoCarousel(props) {
   }, [props.slides]);
 
   var slideRight = function slideRight() {
-    var _slide$;
+    try {
+      var _slide$;
 
-    var preactiveSlide;
-    var proactiveSlide;
-    var slideCurrentLoc = slideCurrent;
-    var activeClass = styles.sliderSingle + ' ' + styles.active;
-    var slide = [].concat(slides);
+      var preactiveSlide;
+      var proactiveSlide;
+      var slideCurrentLoc = slideCurrent;
+      var activeClass = styles.sliderSingle + ' ' + styles.active;
+      var slide = [].concat(slides);
 
-    if (slideTotal > 1) {
-      if (slideCurrentLoc < slideTotal) {
-        slideCurrentLoc++;
-      } else {
-        slideCurrentLoc = 0;
-      }
+      if (slideTotal > 1) {
+        var _document$getElements;
 
-      if (slideCurrentLoc > 0) {
-        preactiveSlide = slide[slideCurrentLoc - 1];
-      } else {
-        preactiveSlide = slide[slideTotal];
-      }
-
-      var activeSlide = slide[slideCurrentLoc];
-
-      if (slideCurrentLoc < slideTotal) {
-        proactiveSlide = slide[slideCurrentLoc + 1];
-      } else {
-        proactiveSlide = slide[0];
-      }
-
-      slide.forEach(function (slid) {
-        var _slid$class, _slid$class2;
-
-        if (slid !== null && slid !== void 0 && (_slid$class = slid["class"]) !== null && _slid$class !== void 0 && _slid$class.includes('preactivede')) {
-          slid["class"] = styles.sliderSingle + ' ' + styles.proactivede;
+        if (slideCurrentLoc < slideTotal) {
+          slideCurrentLoc++;
+        } else {
+          slideCurrentLoc = 0;
         }
 
-        if (slid !== null && slid !== void 0 && (_slid$class2 = slid["class"]) !== null && _slid$class2 !== void 0 && _slid$class2.includes('preactive')) {
-          slid["class"] = styles.sliderSingle + ' ' + styles.preactivede;
+        if (slideCurrentLoc > 0) {
+          preactiveSlide = slide[slideCurrentLoc - 1];
+        } else {
+          preactiveSlide = slide[slideTotal];
         }
-      });
-      preactiveSlide["class"] = styles.sliderSingle + ' ' + styles.preactive;
-      activeSlide["class"] = activeClass;
-      proactiveSlide["class"] = styles.sliderSingle + ' ' + styles.proactive;
-      setSlides(slide);
-      setSlideCurrent(slideCurrentLoc);
 
-      if (document.getElementsByClassName(styles.sliderSingle + " " + styles.active).length > 0) {
-        setTimeout(function () {
-          if (document.getElementsByClassName(styles.sliderSingle + " " + styles.active).length > 0) {
-            var _document$getElements;
+        var activeSlide = slide[slideCurrentLoc];
+        (_document$getElements = document.getElementsByClassName(styles.textualItem + " " + styles.selected)[0]) === null || _document$getElements === void 0 ? void 0 : _document$getElements.classList.remove(styles.selected);
+        var tested = document.querySelector("[data-target=item" + slideCurrentLoc + "]");
+        tested === null || tested === void 0 ? void 0 : tested.classList.add(styles.selected);
 
-            var _height = (_document$getElements = document.getElementsByClassName('slider-single active')[0]) === null || _document$getElements === void 0 ? void 0 : _document$getElements.clientHeight;
+        if (slideCurrentLoc < slideTotal) {
+          proactiveSlide = slide[slideCurrentLoc + 1];
+        } else {
+          proactiveSlide = slide[0];
+        }
 
-            setHeight(_height + "px");
+        slide.forEach(function (slid) {
+          var _slid$class, _slid$class2;
+
+          if (slid !== null && slid !== void 0 && (_slid$class = slid["class"]) !== null && _slid$class !== void 0 && _slid$class.includes('preactivede')) {
+            slid["class"] = styles.sliderSingle + ' ' + styles.proactivede;
           }
-        }, 100);
+
+          if (slid !== null && slid !== void 0 && (_slid$class2 = slid["class"]) !== null && _slid$class2 !== void 0 && _slid$class2.includes('preactive')) {
+            slid["class"] = styles.sliderSingle + ' ' + styles.preactivede;
+          }
+        });
+        preactiveSlide["class"] = styles.sliderSingle + ' ' + styles.preactive;
+        activeSlide["class"] = activeClass;
+        proactiveSlide["class"] = styles.sliderSingle + ' ' + styles.proactive;
+        setSlides(slide);
+        setSlideCurrent(slideCurrentLoc);
+
+        if (document.getElementsByClassName(styles.sliderSingle + " " + styles.active).length > 0) {
+          setTimeout(function () {
+            if (document.getElementsByClassName(styles.sliderSingle + " " + styles.active).length > 0) {
+              var _document$getElements2;
+
+              var _height = (_document$getElements2 = document.getElementsByClassName('slider-single active')[0]) === null || _document$getElements2 === void 0 ? void 0 : _document$getElements2.clientHeight;
+
+              setHeight(_height + "px");
+            }
+          }, 100);
+        }
+
+        props.onSlideChange(slideCurrentLoc);
+
+        if (props !== null && props !== void 0 && props.autoplay) {
+          clearTimeout(intervalRef === null || intervalRef === void 0 ? void 0 : intervalRef.current);
+          intervalRef.current = setTimeout(function () {
+            nextRef.current.click();
+          }, props === null || props === void 0 ? void 0 : props.interval);
+        }
+      } else if (slide[0] && ((_slide$ = slide[0]) === null || _slide$ === void 0 ? void 0 : _slide$["class"]) !== activeClass) {
+        slide[0]["class"] = activeClass;
+        setSlides(slide);
+        setSlideCurrent(0);
       }
 
-      props.onSlideChange(slideCurrentLoc);
-
-      if (props !== null && props !== void 0 && props.autoplay) {
-        clearTimeout(intervalRef === null || intervalRef === void 0 ? void 0 : intervalRef.current);
-        intervalRef.current = setTimeout(function () {
-          nextRef.current.click();
-        }, props === null || props === void 0 ? void 0 : props.interval);
-      }
-    } else if (slide[0] && ((_slide$ = slide[0]) === null || _slide$ === void 0 ? void 0 : _slide$["class"]) !== activeClass) {
-      slide[0]["class"] = activeClass;
-      setSlides(slide);
-      setSlideCurrent(0);
+      return Promise.resolve();
+    } catch (e) {
+      return Promise.reject(e);
     }
   };
 
   var slideLeft = function slideLeft() {
     if (slideTotal > 1) {
-      var _document$getElements2;
+      var _document$getElements3, _document$getElements4;
 
       var preactiveSlide;
       var proactiveSlide;
@@ -171,6 +184,9 @@ var VolkenoCarousel = function VolkenoCarousel(props) {
       }
 
       var activeSlide = slide[slideCurrentLoc];
+      (_document$getElements3 = document.getElementsByClassName(styles.textualItem + " " + styles.selected)[0]) === null || _document$getElements3 === void 0 ? void 0 : _document$getElements3.classList.remove(styles.selected);
+      var tested = document.querySelector("[data-target=item" + slideCurrentLoc + "]");
+      tested === null || tested === void 0 ? void 0 : tested.classList.add(styles.selected);
 
       if (slideCurrentLoc > 0) {
         preactiveSlide = slide[slideCurrentLoc - 1];
@@ -196,7 +212,7 @@ var VolkenoCarousel = function VolkenoCarousel(props) {
       setSlideCurrent(slideCurrentLoc);
       props.onSlideChange(slideCurrentLoc);
 
-      if (((_document$getElements2 = document.getElementsByClassName(styles.sliderSingle + " " + styles.active)) === null || _document$getElements2 === void 0 ? void 0 : _document$getElements2.length) > 0) {
+      if (((_document$getElements4 = document.getElementsByClassName(styles.sliderSingle + " " + styles.active)) === null || _document$getElements4 === void 0 ? void 0 : _document$getElements4.length) > 0) {
         setTimeout(function () {
           if (document.getElementsByClassName(styles.sliderSingle + " " + styles.active).length > 0) ;
         }, 500);
@@ -231,7 +247,9 @@ var VolkenoCarousel = function VolkenoCarousel(props) {
   };
 
   return React__default.createElement("div", {
-    className: 'container-slide'
+    className: styles.container
+  }, React__default.createElement("div", {
+    className: styles.containerSlide
   }, React__default.createElement("div", Object.assign({
     className: "" + styles.react3dCarousel,
     style: {
@@ -265,10 +283,28 @@ var VolkenoCarousel = function VolkenoCarousel(props) {
     }))), React__default.createElement("div", {
       className: "" + styles.sliderSingleContent
     }, slider === null || slider === void 0 ? void 0 : slider.element));
-  }))) : null));
+  }))) : null)), React__default.createElement("div", {
+    className: styles.containerSlide
+  }, React__default.createElement("div", {
+    className: 'caroussel-textual-container'
+  }, React__default.createElement("div", {
+    className: 'caroussel-textual-item-container'
+  }, slides && (slides === null || slides === void 0 ? void 0 : slides.length) > 0 ? slides.map(function (slide, index) {
+    return React__default.createElement("div", {
+      "data-target": "item" + index,
+      className: styles.textualItem,
+      key: index
+    }, React__default.createElement("div", {
+      className: 'bloc-flex-img-text'
+    }, React__default.createElement("div", {
+      className: 'div-inherit-position div-inherit-position-text'
+    }, React__default.createElement("p", {
+      className: 'text-temoignage-client'
+    }, slide === null || slide === void 0 ? void 0 : slide.text))));
+  }) : null))));
 };
 VolkenoCarousel.propTypes = {
-  slides: PropTypes.arrayOf(PropTypes.element),
+  slides: PropTypes.arrayOf(PropTypes.object),
   autoplay: PropTypes.bool,
   interval: PropTypes.number,
   arrows: PropTypes.bool,

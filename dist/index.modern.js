@@ -3,7 +3,7 @@ import { useSwipeable } from 'react-swipeable';
 import PropTypes from 'prop-types';
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-icons/bs';
 
-var styles = {"test":"_styles-module__test__3ybTi","sliderSingleContent":"_styles-module__sliderSingleContent__3c5V9","react3dCarousel":"_styles-module__react3dCarousel__24jc0","sliderContainer":"_styles-module__sliderContainer__1ac0a","sliderContent":"_styles-module__sliderContent__2TODB","sliderSingle":"_styles-module__sliderSingle__1Dlc_","preactivede":"_styles-module__preactivede__1AkrP","preactive":"_styles-module__preactive__3YTAI","proactive":"_styles-module__proactive__2e5FE","proactivede":"_styles-module__proactivede__39-nr","active":"_styles-module__active__3sodH","sliderLeft":"_styles-module__sliderLeft__2MbHb","sliderRight":"_styles-module__sliderRight__1OwVg","sliderLeftNoborders":"_styles-module__sliderLeftNoborders__1-KfO","sliderRightNoborders":"_styles-module__sliderRightNoborders__1O8RK","sliderDisabled":"_styles-module__sliderDisabled__1aC52","textual-item":"_styles-module__textual-item__3hjNl","selected":"_styles-module__selected__2tiFr","fa":"_styles-module__fa__2Rvwq","btn-control":"_styles-module__btn-control__3wWwt","heartbeat":"_styles-module__heartbeat__2IKEy"};
+var styles = {"test":"_styles-module__test__3ybTi","container":"_styles-module__container__1Lxpd","containerSlide":"_styles-module__containerSlide__XBhrP","textualItem":"_styles-module__textualItem__1YSPp","selected":"_styles-module__selected__2tiFr","react3dCarousel":"_styles-module__react3dCarousel__24jc0","sliderContainer":"_styles-module__sliderContainer__1ac0a","sliderContent":"_styles-module__sliderContent__2TODB","sliderSingle":"_styles-module__sliderSingle__1Dlc_","sliderSingleContent":"_styles-module__sliderSingleContent__3c5V9","preactivede":"_styles-module__preactivede__1AkrP","preactive":"_styles-module__preactive__3YTAI","proactive":"_styles-module__proactive__2e5FE","proactivede":"_styles-module__proactivede__39-nr","active":"_styles-module__active__3sodH","sliderLeft":"_styles-module__sliderLeft__2MbHb","sliderRight":"_styles-module__sliderRight__1OwVg","sliderLeftNoborders":"_styles-module__sliderLeftNoborders__1-KfO","sliderRightNoborders":"_styles-module__sliderRightNoborders__1O8RK","sliderDisabled":"_styles-module__sliderDisabled__1aC52","textual-item":"_styles-module__textual-item__3hjNl","fa":"_styles-module__fa__2Rvwq","btn-control":"_styles-module__btn-control__3wWwt","heartbeat":"_styles-module__heartbeat__2IKEy"};
 
 const VolkenoCarousel = props => {
   const [slideTotal, setSlideTotal] = React.useState(0);
@@ -23,7 +23,8 @@ const VolkenoCarousel = props => {
     props.slides.forEach(slide => {
       const slideobject = {
         class: styles.sliderSingle + ' ' + styles.proactivede,
-        element: slide
+        element: slide === null || slide === void 0 ? void 0 : slide.img,
+        text: slide === null || slide === void 0 ? void 0 : slide.text
       };
       locSlides.push(slideobject);
     });
@@ -32,7 +33,8 @@ const VolkenoCarousel = props => {
       props.slides.forEach(slide => {
         const slideobject = {
           class: styles.sliderSingle + ' ' + styles.proactivede,
-          element: slide
+          element: slide === null || slide === void 0 ? void 0 : slide.img,
+          text: slide === null || slide === void 0 ? void 0 : slide.text
         };
         locSlides.push(slideobject);
       });
@@ -56,7 +58,7 @@ const VolkenoCarousel = props => {
     }
   }, [props.slides]);
 
-  const slideRight = () => {
+  const slideRight = async () => {
     var _slide$;
 
     let preactiveSlide;
@@ -66,6 +68,8 @@ const VolkenoCarousel = props => {
     const slide = [...slides];
 
     if (slideTotal > 1) {
+      var _document$getElements;
+
       if (slideCurrentLoc < slideTotal) {
         slideCurrentLoc++;
       } else {
@@ -79,6 +83,9 @@ const VolkenoCarousel = props => {
       }
 
       const activeSlide = slide[slideCurrentLoc];
+      (_document$getElements = document.getElementsByClassName(`${styles.textualItem} ${styles.selected}`)[0]) === null || _document$getElements === void 0 ? void 0 : _document$getElements.classList.remove(styles.selected);
+      const tested = document.querySelector(`[data-target=item${slideCurrentLoc}]`);
+      tested === null || tested === void 0 ? void 0 : tested.classList.add(styles.selected);
 
       if (slideCurrentLoc < slideTotal) {
         proactiveSlide = slide[slideCurrentLoc + 1];
@@ -106,9 +113,9 @@ const VolkenoCarousel = props => {
       if (document.getElementsByClassName(`${styles.sliderSingle} ${styles.active}`).length > 0) {
         setTimeout(() => {
           if (document.getElementsByClassName(`${styles.sliderSingle} ${styles.active}`).length > 0) {
-            var _document$getElements;
+            var _document$getElements2;
 
-            const height = (_document$getElements = document.getElementsByClassName('slider-single active')[0]) === null || _document$getElements === void 0 ? void 0 : _document$getElements.clientHeight;
+            const height = (_document$getElements2 = document.getElementsByClassName('slider-single active')[0]) === null || _document$getElements2 === void 0 ? void 0 : _document$getElements2.clientHeight;
             setHeight(`${height}px`);
           }
         }, 100);
@@ -131,7 +138,7 @@ const VolkenoCarousel = props => {
 
   const slideLeft = () => {
     if (slideTotal > 1) {
-      var _document$getElements2;
+      var _document$getElements3, _document$getElements4;
 
       let preactiveSlide;
       let proactiveSlide;
@@ -151,6 +158,9 @@ const VolkenoCarousel = props => {
       }
 
       const activeSlide = slide[slideCurrentLoc];
+      (_document$getElements3 = document.getElementsByClassName(`${styles.textualItem} ${styles.selected}`)[0]) === null || _document$getElements3 === void 0 ? void 0 : _document$getElements3.classList.remove(styles.selected);
+      const tested = document.querySelector(`[data-target=item${slideCurrentLoc}]`);
+      tested === null || tested === void 0 ? void 0 : tested.classList.add(styles.selected);
 
       if (slideCurrentLoc > 0) {
         preactiveSlide = slide[slideCurrentLoc - 1];
@@ -176,7 +186,7 @@ const VolkenoCarousel = props => {
       setSlideCurrent(slideCurrentLoc);
       props.onSlideChange(slideCurrentLoc);
 
-      if (((_document$getElements2 = document.getElementsByClassName(`${styles.sliderSingle} ${styles.active}`)) === null || _document$getElements2 === void 0 ? void 0 : _document$getElements2.length) > 0) {
+      if (((_document$getElements4 = document.getElementsByClassName(`${styles.sliderSingle} ${styles.active}`)) === null || _document$getElements4 === void 0 ? void 0 : _document$getElements4.length) > 0) {
         setTimeout(() => {
           if (document.getElementsByClassName(`${styles.sliderSingle} ${styles.active}`).length > 0) ;
         }, 500);
@@ -211,7 +221,9 @@ const VolkenoCarousel = props => {
   };
 
   return React.createElement("div", {
-    className: 'container-slide'
+    className: styles.container
+  }, React.createElement("div", {
+    className: styles.containerSlide
   }, React.createElement("div", Object.assign({
     className: `${styles.react3dCarousel}`,
     style: {
@@ -239,10 +251,26 @@ const VolkenoCarousel = props => {
     className: 'fa fa-arrow-right'
   }))), React.createElement("div", {
     className: `${styles.sliderSingleContent}`
-  }, slider === null || slider === void 0 ? void 0 : slider.element))))) : null));
+  }, slider === null || slider === void 0 ? void 0 : slider.element))))) : null)), React.createElement("div", {
+    className: styles.containerSlide
+  }, React.createElement("div", {
+    className: 'caroussel-textual-container'
+  }, React.createElement("div", {
+    className: 'caroussel-textual-item-container'
+  }, slides && (slides === null || slides === void 0 ? void 0 : slides.length) > 0 ? slides.map((slide, index) => React.createElement("div", {
+    "data-target": `item${index}`,
+    className: styles.textualItem,
+    key: index
+  }, React.createElement("div", {
+    className: 'bloc-flex-img-text'
+  }, React.createElement("div", {
+    className: 'div-inherit-position div-inherit-position-text'
+  }, React.createElement("p", {
+    className: 'text-temoignage-client'
+  }, slide === null || slide === void 0 ? void 0 : slide.text))))) : null))));
 };
 VolkenoCarousel.propTypes = {
-  slides: PropTypes.arrayOf(PropTypes.element),
+  slides: PropTypes.arrayOf(PropTypes.object),
   autoplay: PropTypes.bool,
   interval: PropTypes.number,
   arrows: PropTypes.bool,

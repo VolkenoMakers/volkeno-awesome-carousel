@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react'
 import { useSwipeable } from 'react-swipeable'
 import PropTypes from 'prop-types'
@@ -26,7 +28,8 @@ export const VolkenoCarousel = (props: any) => {
     props.slides.forEach((slide: any) => {
       const slideobject: any = {
         class: styles.sliderSingle + ' ' + styles.proactivede,
-        element: slide
+        element: slide?.img,
+        text: slide?.text
       }
       locSlides.push(slideobject)
     })
@@ -34,7 +37,8 @@ export const VolkenoCarousel = (props: any) => {
       props.slides.forEach((slide: any) => {
         const slideobject = {
           class: styles.sliderSingle + ' ' + styles.proactivede,
-          element: slide
+          element: slide?.img,
+          text: slide?.text
         }
         locSlides.push(slideobject)
       })
@@ -55,7 +59,7 @@ export const VolkenoCarousel = (props: any) => {
     }
   }, [props.slides])
 
-  const slideRight = () => {
+  const slideRight = async () => {
     let preactiveSlide: any
     let proactiveSlide: any
     let slideCurrentLoc = slideCurrent
@@ -76,6 +80,15 @@ export const VolkenoCarousel = (props: any) => {
       }
 
       const activeSlide = slide[slideCurrentLoc]
+      document
+        .getElementsByClassName(`${styles.textualItem} ${styles.selected}`)[0]
+        ?.classList.remove(styles.selected)
+      // doc[0]?.classList.remove(styles.selected)
+      const tested = document.querySelector(
+        `[data-target=item${slideCurrentLoc}]`
+      )
+      tested?.classList.add(styles.selected)
+      // console.log(doc, 'test', 'tested', tested)
       if (slideCurrentLoc < slideTotal) {
         proactiveSlide = slide[slideCurrentLoc + 1]
       } else {
@@ -146,6 +159,14 @@ export const VolkenoCarousel = (props: any) => {
         proactiveSlide = slide[0]
       }
       const activeSlide = slide[slideCurrentLoc]
+      document
+        .getElementsByClassName(`${styles.textualItem} ${styles.selected}`)[0]
+        ?.classList.remove(styles.selected)
+      // doc[0]?.classList.remove(styles.selected)
+      const tested = document.querySelector(
+        `[data-target=item${slideCurrentLoc}]`
+      )
+      tested?.classList.add(styles.selected)
       if (slideCurrentLoc > 0) {
         preactiveSlide = slide[slideCurrentLoc - 1]
       } else {
@@ -211,210 +232,91 @@ export const VolkenoCarousel = (props: any) => {
   //   console.log("slides", slides);
 
   return (
-    <div className='container-slide'>
-      <div
-        className={`${styles.react3dCarousel}`}
-        style={{ height }}
-        {...handlers}
-      >
-        {slides && slides?.length > 0 ? (
-          <div className={`${styles.sliderContainer}`}>
-            <div className={`${styles.sliderContent}`}>
-              {slides.map((slider: any, index: any) => (
-                <div className={`${slider.class}`} key={index}>
-                  <div
-                    className={sliderClass('Left')}
-                    onClick={() => slideLeft()}
-                  >
-                    <div>
-                      <BsFillArrowLeftCircleFill
-                        color='black'
-                        className='fa fa-arrow-left'
-                      />
+    <div className={styles.container}>
+      <div className={styles.containerSlide}>
+        <div
+          className={`${styles.react3dCarousel}`}
+          style={{ height }}
+          {...handlers}
+        >
+          {slides && slides?.length > 0 ? (
+            <div className={`${styles.sliderContainer}`}>
+              <div className={`${styles.sliderContent}`}>
+                {slides.map((slider: any, index: any) => (
+                  <div className={`${slider.class}`} key={index}>
+                    <div
+                      className={sliderClass('Left')}
+                      onClick={() => slideLeft()}
+                    >
+                      <div>
+                        <BsFillArrowLeftCircleFill
+                          color='black'
+                          className='fa fa-arrow-left'
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    className={sliderClass('Right')}
-                    onClick={() => slideRight()}
-                    ref={nextRef}
-                  >
-                    <div>
-                      <BsFillArrowRightCircleFill
-                        color='black'
-                        className='fa fa-arrow-right'
-                      />
+                    <div
+                      className={sliderClass('Right')}
+                      onClick={() => slideRight()}
+                      ref={nextRef}
+                    >
+                      <div>
+                        <BsFillArrowRightCircleFill
+                          color='black'
+                          className='fa fa-arrow-right'
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  <div className={`${styles.sliderSingleContent}`}>
-                    {slider?.element}
+                    <div className={`${styles.sliderSingleContent}`}>
+                      {slider?.element}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
       </div>
-      {/* <div className='caroussel-textual-container'>
-        <div className='caroussel-textual-item-container'>
-          <div data-target='item1' className='textual-item'>
-            <div className='bloc-flex-img-text'>
-              <div className='div-inherit-position div-inherit-position-icon'>
-                <img
-                  src='https://picsum.photos/800/300/?random'
-                  alt='Carousel Client'
-                  className='img-icon-carousel-item'
-                />
-              </div>
-              <div className='div-inherit-position div-inherit-position-text'>
-                <p className='text-temoignage-client'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Turpis viverra amet, morbi neque, venenatis est volutpat ipsum
-                  aliquam. Egestas habitant in metus, in leo gravida nunc nisl.
-                  Amet, amet sed porttitor ut felis. Eu aenean et cras duis
-                  faucibus eu. Rhoncus, euismod volutpat gravida in fermentum
-                  sollicitudin volutpat cursus. Elementum id scelerisque egestas
-                  nec pulvinar. Sed volutpat pellentesque pellentesque semper
-                  nisl, lectus sit. Sed.
-                </p>
-              </div>
-            </div>
-            <p className='nom-client-carousel'>Adama Diakhaté</p>
-            <p className='libelle-client-carousel'>Project manager</p>
-          </div>
-          <div data-target='item2' className='textual-item selected'>
-            <div className='bloc-flex-img-text'>
-              <div className='div-inherit-position div-inherit-position-icon'>
-                <img
-                  src='https://picsum.photos/800/300/?random'
-                  alt='Carousel Client'
-                  className='img-icon-carousel-item'
-                />
-              </div>
-              <div className='div-inherit-position div-inherit-position-text'>
-                <p className='text-temoignage-client'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Turpis viverra amet, morbi neque, venenatis est volutpat ipsum
-                  aliquam. Egestas habitant in metus, in leo gravida nunc nisl.
-                  Amet, amet sed porttitor ut felis. Eu aenean et cras duis
-                  faucibus eu. Rhoncus, euismod volutpat gravida in fermentum
-                  sollicitudin volutpat cursus. Elementum id scelerisque egestas
-                  nec pulvinar. Sed volutpat pellentesque pellentesque semper
-                  nisl, lectus sit. Sed.
-                </p>
-              </div>
-            </div>
-            <p className='nom-client-carousel'>Baba Sarr</p>
-            <p className='libelle-client-carousel'>Project manager</p>
-          </div>
-          <div data-target='item3' className='textual-item'>
-            <div className='bloc-flex-img-text'>
-              <div className='div-inherit-position div-inherit-position-icon'>
-                <img
-                  src='https://picsum.photos/800/300/?random'
-                  alt='Carousel Client'
-                  className='img-icon-carousel-item'
-                />
-              </div>
-              <div className='div-inherit-position div-inherit-position-text'>
-                <p className='text-temoignage-client'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Turpis viverra amet, morbi neque, venenatis est volutpat ipsum
-                  aliquam. Egestas habitant in metus, in leo gravida nunc nisl.
-                  Amet, amet sed porttitor ut felis. Eu aenean et cras duis
-                  faucibus eu. Rhoncus, euismod volutpat gravida in fermentum
-                  sollicitudin volutpat cursus. Elementum id scelerisque egestas
-                  nec pulvinar. Sed volutpat pellentesque pellentesque semper
-                  nisl, lectus sit. Sed.
-                </p>
-              </div>
-            </div>
-            <p className='nom-client-carousel'>Mbaye Niass</p>
-            <p className='libelle-client-carousel'>Project manager</p>
-          </div>
-          <div data-target='item4' className='textual-item'>
-            <div className='bloc-flex-img-text'>
-              <div className='div-inherit-position div-inherit-position-icon'>
-                <img
-                  src='https://picsum.photos/800/300/?random'
-                  alt='Carousel Client'
-                  className='img-icon-carousel-item'
-                />
-              </div>
-              <div className='div-inherit-position div-inherit-position-text'>
-                <p className='text-temoignage-client'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Turpis viverra amet, morbi neque, venenatis est volutpat ipsum
-                  aliquam. Egestas habitant in metus, in leo gravida nunc nisl.
-                  Amet, amet sed porttitor ut felis. Eu aenean et cras duis
-                  faucibus eu. Rhoncus, euismod volutpat gravida in fermentum
-                  sollicitudin volutpat cursus. Elementum id scelerisque egestas
-                  nec pulvinar. Sed volutpat pellentesque pellentesque semper
-                  nisl, lectus sit. Sed.
-                </p>
-              </div>
-            </div>
-            <p className='nom-client-carousel'>Babacar Mbengue</p>
-            <p className='libelle-client-carousel'>Project manager</p>
-          </div>
-          <div data-target='item5' className='textual-item'>
-            <div className='bloc-flex-img-text'>
-              <div className='div-inherit-position div-inherit-position-icon'>
-                <img
-                  src='https://picsum.photos/800/300/?random'
-                  alt='Carousel Client'
-                  className='img-icon-carousel-item'
-                />
-              </div>
-              <div className='div-inherit-position div-inherit-position-text'>
-                <p className='text-temoignage-client'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Turpis viverra amet, morbi neque, venenatis est volutpat ipsum
-                  aliquam. Egestas habitant in metus, in leo gravida nunc nisl.
-                  Amet, amet sed porttitor ut felis. Eu aenean et cras duis
-                  faucibus eu. Rhoncus, euismod volutpat gravida in fermentum
-                  sollicitudin volutpat cursus. Elementum id scelerisque egestas
-                  nec pulvinar. Sed volutpat pellentesque pellentesque semper
-                  nisl, lectus sit. Sed.
-                </p>
-              </div>
-            </div>
-            <p className='nom-client-carousel'>Chérif Guissé</p>
-            <p className='libelle-client-carousel'>Project manager</p>
-          </div>
-          <div data-target='item6' className='textual-item'>
-            <div className='bloc-flex-img-text'>
-              <div className='div-inherit-position div-inherit-position-icon'>
-                <img
-                  src='https://picsum.photos/800/300/?random'
-                  alt='Carousel Client'
-                  className='img-icon-carousel-item'
-                />
-              </div>
-              <div className='div-inherit-position div-inherit-position-text'>
-                <p className='text-temoignage-client'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Turpis viverra amet, morbi neque, venenatis est volutpat ipsum
-                  aliquam. Egestas habitant in metus, in leo gravida nunc nisl.
-                  Amet, amet sed porttitor ut felis. Eu aenean et cras duis
-                  faucibus eu. Rhoncus, euismod volutpat gravida in fermentum
-                  sollicitudin volutpat cursus. Elementum id scelerisque egestas
-                  nec pulvinar. Sed volutpat pellentesque pellentesque semper
-                  nisl, lectus sit. Sed.
-                </p>
-              </div>
-            </div>
-            <p className='nom-client-carousel'>Makhtar Bâ</p>
-            <p className='libelle-client-carousel'>Project manager</p>
+      <div className={styles.containerSlide}>
+        <div className='caroussel-textual-container'>
+          <div className='caroussel-textual-item-container'>
+            {slides && slides?.length > 0
+              ? slides.map((slide: any, index: number) => (
+                  <div
+                    data-target={`item${index}`}
+                    className={styles.textualItem}
+                    key={index}
+                  >
+                    <div className='bloc-flex-img-text'>
+                      {/* <div className='div-inherit-position div-inherit-position-icon'>
+                        <img
+                          src='https://picsum.photos/800/300/?random'
+                          alt='Carousel Client'
+                          className={slide.class}
+                          width='50'
+                        />
+                      </div> */}
+                      <div className='div-inherit-position div-inherit-position-text'>
+                        <p className='text-temoignage-client'>{slide?.text}</p>
+                      </div>
+                    </div>
+                    {/* <p className='nom-client-carousel'>
+                      Adama Diakhaté {`item${index}`}
+                    </p>
+                    <p className='libelle-client-carousel'> {`item${index}`}</p> */}
+                  </div>
+                ))
+              : null}
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   )
 }
 
 VolkenoCarousel.propTypes = {
-  slides: PropTypes.arrayOf(PropTypes.element),
+  slides: PropTypes.arrayOf(PropTypes.object),
   autoplay: PropTypes.bool,
   interval: PropTypes.number,
   arrows: PropTypes.bool,
