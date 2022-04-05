@@ -4,6 +4,21 @@
   "description": "Made with create-react-library",
   "author": "VolkenoMakers",
   "license": "MIT",
+  "private": false,
+  "keywords": [
+    "reactjs",
+    "carousel",
+    "multi carousel",
+    "reactjs multi carousel",
+    "reactjs multi slider",
+    "reactjs awesome multi carousel",
+    "custom react multi carousel"
+  ],
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
   "repository": "VolkenoMakers/volkeno-awesome-carousel",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
@@ -21,7 +36,8 @@
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build"
+    "deploy": "gh-pages -d example/build",
+    "publish:npm": "rm -rf dist && mkdir dist &&  babel src/components -d dist --copy-files"
   },
   "peerDependencies": {
     "react": "^17.0.2"

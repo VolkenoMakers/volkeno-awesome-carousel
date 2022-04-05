@@ -17,7 +17,9 @@ const App = () => {
           Elementum id scelerisque egestas nec pulvinar. Sed volutpat
           pellentesque pellentesque semper nisl, lectus sit. Sed.
         </p>
-      )
+      ),
+      author: <p>Adama Diakhaté</p>,
+      subTitle: <p>Product manager</p>
     },
     {
       img: <img src='https://picsum.photos/800/301/?random' alt='2' />,
@@ -31,7 +33,9 @@ const App = () => {
           Elementum id scelerisque egestas nec pulvinar. Sed volutpat
           pellentesque pellentesque semper nisl, lectus sit. Sed.
         </p>
-      )
+      ),
+      author: <p>Mbaye Niass</p>,
+      subTitle: <p>Product manager</p>
     },
     {
       img: <img src='https://picsum.photos/800/302/?random' alt='3' />,
@@ -45,7 +49,9 @@ const App = () => {
           Elementum id scelerisque egestas nec pulvinar. Sed volutpat
           pellentesque pellentesque semper nisl, lectus sit. Sed.
         </p>
-      )
+      ),
+      author: <p>Baba Sarr</p>,
+      subTitle: <p>Product manager</p>
     },
     {
       img: <img src='https://picsum.photos/800/303/?random' alt='4' />,
@@ -59,7 +65,9 @@ const App = () => {
           Elementum id scelerisque egestas nec pulvinar. Sed volutpat
           pellentesque pellentesque semper nisl, lectus sit. Sed.
         </p>
-      )
+      ),
+      author: <p>Babacar Mbengue</p>,
+      subTitle: <p>Product manager</p>
     },
     {
       img: <img src='https://picsum.photos/800/304/?random' alt='5' />,
@@ -73,7 +81,9 @@ const App = () => {
           Elementum id scelerisque egestas nec pulvinar. Sed volutpat
           pellentesque pellentesque semper nisl, lectus sit. Sed.
         </p>
-      )
+      ),
+      author: <p>Paul Gomis</p>,
+      subTitle: <p>Product manager</p>
     }
   ]
   // console.log('slides', slides)

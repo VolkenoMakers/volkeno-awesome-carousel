@@ -29,7 +29,9 @@ export const VolkenoCarousel = (props: any) => {
       const slideobject: any = {
         class: styles.sliderSingle + ' ' + styles.proactivede,
         element: slide?.img,
-        text: slide?.text
+        text: slide?.text,
+        author: slide?.author,
+        subTitle: slide?.subTitle
       }
       locSlides.push(slideobject)
     })
@@ -38,7 +40,9 @@ export const VolkenoCarousel = (props: any) => {
         const slideobject = {
           class: styles.sliderSingle + ' ' + styles.proactivede,
           element: slide?.img,
-          text: slide?.text
+          text: slide?.text,
+          author: slide?.author,
+          subTitle: slide?.subTitle
         }
         locSlides.push(slideobject)
       })
@@ -279,7 +283,7 @@ export const VolkenoCarousel = (props: any) => {
         </div>
       </div>
       <div className={styles.containerSlide}>
-        <div className='caroussel-textual-container'>
+        <div className={styles.carousselTextualContainer}>
           <div className='caroussel-textual-item-container'>
             {slides && slides?.length > 0
               ? slides.map((slide: any, index: number) => (
@@ -289,22 +293,24 @@ export const VolkenoCarousel = (props: any) => {
                     key={index}
                   >
                     <div className='bloc-flex-img-text'>
-                      {/* <div className='div-inherit-position div-inherit-position-icon'>
+                      <div className='div-inherit-position div-inherit-position-icon'>
                         <img
-                          src='https://picsum.photos/800/300/?random'
+                          src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRownDK1FO2rR4meptR5JHo68P58TQLUp8Zkw&usqp=CAU'
                           alt='Carousel Client'
                           className={slide.class}
                           width='50'
                         />
-                      </div> */}
+                      </div>
                       <div className='div-inherit-position div-inherit-position-text'>
-                        <p className='text-temoignage-client'>{slide?.text}</p>
+                        <p className={styles.textTemoignageClient}>
+                          {slide?.text}
+                        </p>
                       </div>
                     </div>
-                    {/* <p className='nom-client-carousel'>
-                      Adama Diakhaté {`item${index}`}
+                    <p className={styles.nomClientCarousel}>{slide?.author}</p>
+                    <p className={styles.libelleClientCarousel}>
+                      {slide?.subTitle}
                     </p>
-                    <p className='libelle-client-carousel'> {`item${index}`}</p> */}
                   </div>
                 ))
               : null}
