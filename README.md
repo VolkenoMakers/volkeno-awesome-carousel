@@ -15,15 +15,26 @@ npm install --save volkeno-awesome-carousel
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from 'volkeno-awesome-carousel'
+import VolkenoCarousel from 'volkeno-awesome-carousel'
 import 'volkeno-awesome-carousel/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <VolkenoCarousel
+      slides={slides}
+      autoplay={false}
+      onSlideChange={callback}
+    />
   }
 }
 ```
+
+## Configuration - Props
+
+| Property                 |   Type   | Require  |  Default | Description                                                                              |
+| ------------------------ | :------: | :-----:  | :-------:| :------------------------------------------------------------------------------ |
+| slides               | array   |  true    | sucess   |                                        |
+| autoplay                    | boolean   |  false    | ...      |  Toast alert title                                                       |
 
 ## License
 
