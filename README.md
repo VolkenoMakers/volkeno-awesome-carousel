@@ -33,8 +33,9 @@ class Example extends Component {
 
 | Property                 |   Type   | Require  |  Default | Description                                                                              |
 | ------------------------ | :------: | :-----:  | :-------:| :------------------------------------------------------------------------------ |
-| slides               | array   |  true    | sucess   |                                        |
-| autoplay                    | boolean   |  false    | ...      |  Toast alert title                                                       |
+| slides               | array   |  true    |    |text,img, author, subTitle|
+| autoplay                    | boolean   |  false    | ...      |  autoplay slide                                                       |
+| onSlideChange                    | callback   |  ...    | ...      |  (onSlideChange) => void                                                       |
 
 ## License
 
