@@ -84,7 +84,7 @@ const App = () => {
   return (
     <VolkenoCarousel
       slides={slides}
-      autoplay={false}
+      autoplay={true}
       onSlideChange={callback}
     />
   )
