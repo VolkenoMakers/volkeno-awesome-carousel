@@ -96,6 +96,7 @@ const App = () => {
       slides={slides}
       autoplay={true}
       onSlideChange={callback}
+      interval={5000}
     />
   )
 }
