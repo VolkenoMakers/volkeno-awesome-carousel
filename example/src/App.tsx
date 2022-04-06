@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { VolkenoCarousel } from 'volkeno-awesome-carousel'
 import 'volkeno-awesome-carousel/dist/index.css'
 
@@ -96,7 +95,7 @@ const App = () => {
       slides={slides}
       autoplay={true}
       onSlideChange={callback}
-      interval={5000}
+      interval={1000}
     />
   )
 }
