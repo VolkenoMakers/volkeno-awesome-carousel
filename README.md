@@ -1,6 +1,6 @@
 # volkeno-awesome-carousel
 
-> Made with create-react-library
+> Powerful, lightweight and fully customizable carousel component for React apps.
 
 [![NPM](https://img.shields.io/npm/v/volkeno-awesome-carousel.svg)](https://www.npmjs.com/package/volkeno-awesome-carousel) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -113,18 +113,18 @@ const Example = () => {
             interval={5000}
         />
     )
-  
+
 }
 ```
 
 ## Configuration - Props
 
-| Property                 |   Type   | Require  |  Default | Description                                                                              |
+| Property                 |   Type   | Require  |  Default | Description                                                                     |
 | ------------------------ | :------: | :-----:  | :-------:| :------------------------------------------------------------------------------ |
-| slides               | array   |  true    |    |text,img, author, subTitle|
-| autoplay                    | boolean   |  false    | ...      |  autoplay slide                                                       |
-| interval                    | number   |  false    | 3000ms     |  time to move on to another slide                                                       |
-| onSlideChange                    | callback   |  ...    | ...      |  (onSlideChange) => void                                                       |
+| slides                   | array    |  true    |          |  text,img, author, subTitle                                                     |
+| autoplay                 | boolean  |  false   | ...      |  autoplay slide                                                                 |
+| interval                 | number   |  false   | 3000ms   |  time to move on to another slide                                               |
+| onSlideChange            | callback |  ...     | ...      |  (onSlideChange) => void                                                        |
 
 ## License
 
