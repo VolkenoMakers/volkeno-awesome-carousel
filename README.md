@@ -122,6 +122,7 @@ const Example = () => {
 | ------------------------ | :------: | :-----:  | :-------:| :------------------------------------------------------------------------------ |
 | slides               | array   |  true    |    |text,img, author, subTitle|
 | autoplay                    | boolean   |  false    | ...      |  autoplay slide                                                       |
+| interval                    | number   |  false    | 3000ms     |  time to move on to another slide                                                       |
 | onSlideChange                    | callback   |  ...    | ...      |  (onSlideChange) => void                                                       |
 
 ## License
