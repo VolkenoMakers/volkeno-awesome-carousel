@@ -107,10 +107,11 @@ const Example = () => {
   }
     return (
         <VolkenoCarousel
-      slides={slides}
-      autoplay={false}
-      onSlideChange={callback}
-    />
+            slides={slides}
+            autoplay={false}
+            onSlideChange={callback}
+            interval={5000}
+        />
     )
   
 }
